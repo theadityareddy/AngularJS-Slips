@@ -1,0 +1,27 @@
+<!-- Using AngularJS Create a SPA that show History of some(4-8) Historical Places (use MVC). -->
+
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-app="myapp">
+    <div ng-controller="Mycontroller">
+        <h1>Information on historical places</h1>
+        <p>
+        <h2>Taj Mahal : </h2>{{message}}
+        <h2>Qutub Minar :</h2>{{message1}}
+        <h2>India Gate :</h2>{{message2}}
+        <h2>Jallianwala Bagh :</h2>{{message3}}</p>
+    </div>
+    <script>
+        angular.module("myapp", [])
+            .controller("Mycontroller", function ($scope) {
+                $scope.message = "The Taj Mahal is one of the seven wonders of the world and is considered to be the most popular tourist attraction";
+                $scope.message1 = "Qutub Minar is the tallest individual tower in the world and second tallest monument of Delhi";
+                $scope.message2 = "The All India War Memorial, popularly known as the India Gate, is a war memorial located in New Delhi. ";
+                $scope.message3 = "Jallianwala Bagh is a place of great historical importance during the Indian struggle for Independence.";
+            }
+        );
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!-- Using AngularJS display the 10 student details in Table format 
+(using ng-repeat directive use Array to store data) -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<body ng-app="">
+    <div ng-init="data=[
+    {rollno:51, name:'Aditya', marks:'99.9%'},{rollno:36, name:'Shantanu', marks:'98.3%'},{rollno:11, name:'Omkar', marks:'95.7%'},
+    {rollno:43, name:'Mitali', marks:'94.1%'},{rollno:23, name:'Ishan', marks:'93.9%'},{rollno:30, name:'Archita', marks:'90.5%'},
+    {rollno:25, name:'Mihika', marks:'89.6%'},{rollno:55, name:'Avani', marks:'86.2%'},{rollno:18, name:'Jay', marks:'85.3%'}]">
+        <h2>Student Table</h2>
+        <table>
+            <tr>
+                <th>RollNo</th>
+                <th>Name</th>
+                <th>Marks</th>
+            </tr>
+            <tr ng-repeat="each in data">
+                <td>{{each.rollno}}</td>
+                <td>{{each.name}}</td>
+                <td>{{each.marks}}</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

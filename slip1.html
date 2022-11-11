@@ -1,0 +1,31 @@
+<!-- Write an Angular!S script to display list of games stored in an array on click of button using ng-click. 
+And also Demonstrate ng-init, ng-bing directive of AngularIS. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<body ng-app="myApp" ng-init="games=['badminton', 'speedcubing', 'cricket', 'volleyball', 'tennis']">
+    <div ng-controller="myCont">
+        <p>Click this button to show list of sports</p>
+        <button ng-click="tick()">ClickMe</button>
+        <ol ng-show="x">
+            <li ng-repeat="game in games">{{game}}</li>
+        </ol>
+    </div>
+    <script>
+        var app=angular.module("myApp", [])
+        app.controller("myCont",function ($scope){
+            $scope.x=false;
+            $scope.tick = () => {
+                $scope.x=true;
+            }
+        })
+    </script>
+</body>
+</html>

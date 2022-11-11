@@ -1,0 +1,39 @@
+<!-- Using AngularJS display the Employee details order by salary in Table format 
+(using ng-repeat directive, use Array to store data, use filter) -->
+
+<html>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+
+    <head>
+        <title>Slip 19</title>
+    </head>
+
+    <body>
+        <div ng-app="myApp" ng-controller="myCtrl">            
+            <table border="2">
+                <tr>
+                    <th>Name of employee</th>
+                    <th>Salary (in $)</th>
+                </tr>
+                <tr ng-repeat="x in employees | orderBy:'salary' ">
+                    <td>{{x.name}}</td>
+                    <td>{{x.salary}}</td>
+                </tr>
+            </table>        
+        </div>        
+
+        <script>
+            var app = angular.module("myApp", []);
+            app.controller("myCtrl", function($scope) {
+                $scope.employees = [
+                    {name: 'Aditya', salary: 'Rs. 520,000'},
+                    {name: 'Shantanu', salary: 'Rs. 220.000'},
+                    {name: 'Mitali', salary: 'Rs. 450,000'},
+                    {name: 'Omkar', salary: 'Rs. 290,000'},
+                    {name: 'Ishan', salary: 'Rs. 350,000'},
+                    {name: 'Parth', salary: 'Rs. 400,000'}
+                ];
+            });
+        </script>
+    </body>
+</html>

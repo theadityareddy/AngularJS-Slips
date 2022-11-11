@@ -1,0 +1,69 @@
+<!-- Using Angular/S create a SPA that to accept the details of doctor(5-6) having 
+field's no, dname, address, and phone number. Display those in table format. (use MVC.) -->
+
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<body ng-app="mainApp" ng-controller="docController">
+    <h2>Doctor Information Form</h2>
+    <div>
+        <table border="1">
+            <tr>
+                <td>Enter the Doc No</td>
+                <td><input type="number" ng-model="docno"> </td>
+            </tr>
+            <tr>
+                <td>Enter the Doc Name </td>
+                <td><input type="text" ng-model="docname"></td>
+            </tr>
+            <tr>
+                <td>Enter the Doc Address </td>
+                <td><input type="text" ng-model="docaddress"> </td>
+            </tr>
+            <tr>
+                <td>Enter Phone No</td>
+                <td><input type="number" ng-model="phone"></td>
+            </tr>
+            <tr>
+                <td>Enter the Doc Spe</td>
+                <td><input type="text" ng-model="docspl"></td>
+            </tr>
+            <tr>
+                <td> <input type="button" value="Doctor Details" ng-click="tick()">
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div ng-show="x">
+        <br><br>
+        Doctor Details
+        <br><br>
+        <table border="1">
+            <tr>
+                <td>Doctor No</td>
+                <td>Doctor Name</td>
+                <td>Doctor Add</td>
+                <td>Doctor Mobile</td>
+                <td>Doctor Specialization</td>
+            </tr>
+            <tr>
+                <td>{{docno}}</td>
+                <td>{{docname}}</td>
+                <td>{{docaddress}}</td>
+                <td>{{phone}}</td>
+                <td>{{docspl}}</td>
+            </tr>
+        </table>
+    </div>
+    <script> 
+        var mainApp = angular.module("mainApp", []);
+        mainApp.controller('docController', function ($scope) {
+            $scope.x = false;
+            $scope.tick = () => {
+                $scope.x = true;
+            }
+        });
+</script> 
+</body>
+</html>

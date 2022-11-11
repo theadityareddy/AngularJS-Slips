@@ -1,0 +1,40 @@
+<!-- Using AngularJS create a SPA to carry out validation for a username entered in textbox. If the textbox is blank, alert Enter username'. 
+If the number of characters is less than three, alert * Username is too short'. If value entered is appropriate 
+print Valid username' and password should be minimum 8 characters. -->
+
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+
+<body ng-app="myApp" ng-controller="myController">
+    
+    <form name="loginform" novalidate="true" action="submit">
+        Enter Username
+        <input type="email" placeholder="User Name" name="name" ng-model="theName" ng-required="true" />
+        <br /><br />
+        <span style="color:red" ng-show="loginform.name.$dirty && loginform.name.$invalid">Dirty</span>
+        <span ng-show="loginform.name.$error.required">Email is required.</span>
+        <span ng-show="loginform.name.$error.email"> Invalid email address.</span>
+        <br /><br />
+
+        Enter Password
+        <input placeholder="Password" name="pass1" ng-model="thePwd" type="password" ng-minlength="8" ng-required="true" />
+        <br /><br />
+        <span style="color:red" ng-show="loginform.pass1.$dirty && loginform.pass1.$invalid">Dirty</span>
+        <span ng-show="loginform.pass1.$error.required">Password is required.</span>
+        <span ng-show="loginform.pass1.$error.minlength">Password should be 8 chars</span>
+        <br /><br />
+
+        <input type="submit" name="submit" value="submit" />
+    </form>
+
+    <script>
+        var mainApp = angular.module("myApp", []);
+        mainApp.controller("myController", function ($scope) {
+        });
+    </script>
+
+</body>
+</html>

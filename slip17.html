@@ -1,0 +1,43 @@
+<!-- Create an HTML form Using AngularIS for Login system and validate email ID using
+Regular Expression and password should be minimum 8 characters. -->
+
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"> </script>
+</head>
+
+<body ng-app="mainApp" ng-controller="personController">
+    <h2>Login Applicationn</h2>
+    <div>
+        <form name="personform" novalidate="true" action="submit">
+            <table border="1">
+                <tr>
+                    <td>Enter Email ID</td>
+                    <td> <input type="email" name="email" ng-model="email" ng-required="true"></td>
+                    <td>
+                        <span style="color:red" ng-show="personform.email.$dirty && personform.email.$invalid">Dirty</span>
+                        <span ng-show="personform.email.$error.required">Email is required.</span>
+                        <span ng-show="personform.email.$error.email"> Invalid email address.</span>
+                    </td>
+                </tr>
+                <td>Enter Password </td>
+                <td><input placeholder="Password" name="pass1" ng-model="thePwd" type="password" ng-minlength="8"
+                        ng-required="true" /></td>
+                <td> 
+                    <span style="color:red" ng-show="personform.pass1.$dirty && personform.pass1.$invalid"></span>
+                    <span ng-show="personform.pass1.$error.required">Password is required.</span>
+                    <span ng-show="personform.pass1.$error.minlength">Password should be 8 chars</span>
+                </td>
+            </table>
+            <input type="submit" value="submit"><br>
+        </form>
+    </div>
+    <script>
+        var mainApp = angular.module("mainApp", []); mainApp.controller('personController', function ($scope) {
+
+        });
+    </script>
+</body>
+
+</html>

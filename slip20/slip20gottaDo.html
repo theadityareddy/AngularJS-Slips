@@ -1,0 +1,170 @@
+<!-- Using AngularJS create a SPA for Learning System. -->
+
+<!DOCTYPE html>
+
+<html ng-app="myApp">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-dark bg-primary">
+      <a class="navbar-brand" href="#">E Learning System</a>
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarText"
+        aria-controls="navbarText"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#!/home"
+              >Home <span class="sr-only">(current)</span></a
+            >
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#!/management">Management</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#!/staff">Staff</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#!/about">About Us</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div ng-view></div>
+
+    <script>
+      var app = angular.module("myApp", ["ngRoute"]);
+
+      app.config(function ($routeProvider) {
+        $routeProvider
+
+          .when("/home", {
+            templateUrl: "home.html",
+          })
+
+          .when("/management", {
+            templateUrl: "management.html",
+          })
+
+          .when("/staff", {
+            templateUrl: "staff.html",
+          })
+
+          .when("/about", {
+            templateUrl: "about.html",
+          })
+
+          .otherwise({ redirectTo: "/" });
+      });
+
+      app.controller("HomeController", function ($scope) {
+        $scope.message = "Hello Welcome to Home page";
+      });
+    </script>
+  </body>
+</html>
+<!-- home.html
+
+<!DOCTYPE html>
+
+<html>
+
+    <body>
+
+        <h1>welcome is Home page</p>
+
+
+
+    </body>
+
+</html>
+
+
+
+
+
+management.html
+
+
+
+<!DOCTYPE html>
+
+<html>
+
+    <body>
+
+
+
+        <h1>welcome to management page</h1>
+
+
+
+    </body>
+
+</html> -->
+
+<!-- staff.html
+
+
+<html>
+
+    <body>
+
+        <p>welcome to staff page</p>
+
+
+
+    </body>
+
+</html>  -->
+
+
+<!-- about.html
+
+<!DOCTYPE html>
+
+<html>
+
+    <body>
+
+        <h1>this is abous us page</h1>
+
+        <p>For technical queries kindly contact following nos</p>
+
+        <br>
+
+        <p>9811223344,</p>
+
+        <p>test@gmail.com</p>
+
+    </body>
+
+</html -->

@@ -1,0 +1,67 @@
+<!-- Using AngularJS Create a SPA for customer registration visiting a departmental store. 
+Form should consists of fields such as name, contact no., gender, favourite item(to be selected from a list of items with Quantity) 
+and suggestions. Display the Bill with total no of items selected and total amount to be paid.(use filter) -->
+
+<html>
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+</head>
+
+<div ng-app="invoice">
+    <h1>Customer Invoice Example</h1>
+    </section>
+    <section class="row" ng-controller="InvoiceController">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>contactno</th>
+                    <th>gender</th>
+                    <th>Item</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in invoice.items">
+                    <td><input type="text" ng-model="item.name" /></td>
+                    <td><input type="number" ng-model="item.contactno" /></td>
+                    <td><input type="text" ng-model="item.gender" /></td>
+                    <td><select ng-model="item.favorite" id="mySelect">
+                            <option>Tshirt</option>
+                            <option>Jeans</option>
+                            <option>Watch</option>
+                            <option>Shoes</option>
+                        </select></td>
+                    <td><input type="number" name="price" ng-model="item.price"></td>
+                    <td><input type="number" ng-model="item.qty" /></td>
+                    <td>Rs. {{item.qty * item.price}}</td>
+                    <td></td>
+                    <td>Amout to be Paid : </td>
+                    <td>Rs. {{total()}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</div>
+<script>
+    var invoice = angular.module('invoice', []); invoice.controller('InvoiceController', function ($scope) {
+        $scope.invoice = {
+            items: [{
+                name: '',
+                contactno: '',
+                gender: '',
+                favorite: '',
+            }]
+        };
+        $scope.total = function () {
+            var total = 0;
+            angular.forEach($scope.invoice.items, function (item) {
+                total += item.qty * item.price;
+            })
+            return total;
+        }
+    });
+</script>
+</html>

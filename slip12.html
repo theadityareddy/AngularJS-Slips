@@ -1,0 +1,38 @@
+<!-- Using AngularJS display the student details who are live in pune in Table format 
+(using ng-repeat directive, use Array to store data. use filter) -->
+
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    </head>
+    <body>
+        <div ng-app="myApp" ng-controller="myCtrl">
+            <h3>Enter the name of the city: <input type="text" ng-model="city1"></h3>
+
+            <table border="2">
+                <tr>
+                    <th>Name of the student</th>
+                    <th>City</th>
+                </tr>
+                <tr ng-repeat="name in names | filter:city1">
+                    <td>{{name.name}}</td>
+                    <td>{{name.city}}</td>
+                </tr>
+            </table>
+        </div>
+
+        <script>
+            var app = angular.module("myApp",[]);
+            app.controller("myCtrl", function($scope) {
+                $scope.names = [
+                    {name: 'Adita', city: 'Bengaluru'},
+                    {name: 'Mitali', city: 'Mumbai'},
+                    {name: 'Shantanu', city: 'Pune'},
+                    {name: 'Omkar', city: 'Mumbai'},
+                    {name: 'Parth', city: 'Pune'},
+                    {name: 'Ishan', city: 'Delhi'}
+                ];
+            });
+        </script>
+    </body>
+</html>

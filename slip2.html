@@ -1,0 +1,30 @@
+<!-- Write a HTML code using AngularS to generate the following output
+Undergraduate Courses (hint: use ng-repeat, ng-init directive)
+i. BBA(CA)
+ii. BCA(Science) 
+iii. B.Sc.(Computer Science)
+Post Graduate Courses
+i. M.Sc.(Computer Science) 
+ii. M.Sc.(CA) 
+iii. MCA -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<body ng-app="" ng-init=" ug=['BBA-CA', 'BBA-IB', 'BBA']; pg=['MCA', 'M.Sc CS', 'M.Sc CA'] ">
+    <div>
+        <ul>
+            <li ng-repeat="c in ug"> {{c}} </li>
+        </ul>
+        <ul>
+            <li ng-repeat="c in pg"> {{c}} </li>
+        </ul>
+    </div>
+</body>
+</html>

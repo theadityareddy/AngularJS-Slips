@@ -1,0 +1,100 @@
+<!-- Using Angular)S create a SPA that accept the details of student and display mark sheet 
+(roll no, student name, class, subl, sub2, sub3, total, percentage, grade) -->
+
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+
+<body ng-app="mainApp" ng-controller="studentController">
+    <h2 style="color: Red">Student Marksheet Program</h2>
+    <div>
+        <form name="f1">
+            <table border="1">
+                <!-- ng-model-Binds HTML control's value to a property on the $scope object-->
+                <tr>
+                    <td>Enter roll number</td>
+                    <td><input type="number" ng-model="rollno" /></td>
+                </tr>
+                <tr>
+                    <td>Enter student name:</td>
+                    <td><input type="text" name="sname" ng-model="studName" /></td>
+                </tr>
+                <tr>
+                    <td>Enter Subject1 Marks</td>
+                    <td><input type="number" name="subject1" ng-model="sub1" /></td>
+                </tr>
+                <tr>
+                    <td>Enter Subject2 Marks</td>
+                    <td><input type="number" name="subject2" ng-model="sub2" /></td>
+                </tr>
+                <tr>
+                    <td>Enter Subject3 Marks</td>
+                    <td><input type="number" name="subject3" ng-model="sub3" /></td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" value="Display Result" ng-click="tick()" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div ng-show="x">
+        <br /><br />
+        <h1 style="color: green">Mark Sheet of Student</h1>
+        <form name="f2" ng-controller="studentController">
+            <table border="2">
+                <tr>
+                    <td>Rollno</td>
+                    <td>Name</td>
+                    <td>Subject1</td>
+                    <td>Subject2</td>
+                    <td>Subject3</td>
+                    <td>Total</td>
+                    <td>Percentage</td>
+                    <td>Grade</td>
+                </tr>
+                <tr>
+                    <td>{{rollno}}</td>
+                    <td>{{studName}}</td>
+                    <td>{{sub1}}</td>
+                    <td>{{sub2}}</td>
+                    <td>{{sub3}}</td>
+                    <td>{{sub1 + sub2 + sub3}}</td>
+                    <td>{{((sub1+sub2+sub3)/300)*100;}}</td>
+                    <td>{{grade}}</td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <script>
+        var mainApp = angular.module("mainApp", []);
+        mainApp.controller("studentController", function ($scope) {
+            $scope.x = false;
+            $scope.tick = () => {
+                $scope.x = true;
+                let per = $scope.sub1 + $scope.sub2 + $scope.sub3;
+
+                if (per = 74 && per <= 100) {
+                    $scope.grade = "A";
+                }
+                else if (per = 60 && per < 74) {
+                    $scope.grade = "First";
+                }
+                else if (per >= 45 && per < 59) {
+                    $scope.grade = "Second";
+                }
+                else if (per >= 35 && per < 45) {
+                    $scope.grade = "Pass";
+                }
+                else {
+                    $scope.grade = "fail";
+                }
+            };
+        });
+    </script>
+</body>
+
+</html>

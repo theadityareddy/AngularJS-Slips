@@ -1,0 +1,38 @@
+<!-- Write an Angular/S script to print details of bank (bank name, MICR code, IFC code, address etc.) in tabular form using ng-repeat -->
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <style>
+        table, td, th {
+            border: 1px solid;
+        }
+    </style>
+</head>
+<body ng-app="">
+    <div ng-init="data=[
+    {name:'SBI', micr:'SBI4327', ifsc:'287432', add:'pune'},{name:'HDFC', micr:'HDFC286', ifsc:'923763', add:'nashik'},{name:'IDBI', micr:'IDBI024', ifsc:'183642', add:'daund'},
+    {name:'IDBI', micr:'IDBI234', ifsc:'927643', add:'mumbai'},{name:'AXIS', micr:'AXIS924', ifsc:'126258', add:'nagpur'},{name:'HDFC', micr:'HDFC197', ifsc:'287424', add:'pune'},
+    {name:'AXIS', micr:'AXIS924', ifsc:'136724', add:'satara'},{name:'MBOI', micr:'MBOI197', ifsc:'737452', add:'solapur'},{name:'SBI', micr:'SBI9084', ifsc:'674592', add:'lonavla'}]">
+        <h2>Bank Details</h2>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>MICR</th>
+                <th>IFSC</th>
+                <th>Address</th>
+            </tr>
+            <tr ng-repeat="each in data">
+                <td>{{each.name}}</td>
+                <td>{{each.micr}}</td>
+                <td>{{each.ifsc}}</td>
+                <td>{{each.add}}</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

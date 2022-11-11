@@ -1,0 +1,22 @@
+<!-- Write an Angular/S script for addition of two numbers using ng-init, ng-model & ng-bind. 
+And also Demonstrate ng-show, ng-disabled, ng-click directives on button component. -->
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<body ng-app="" ng-init="a=178; b=624; x=false ">
+    <div>
+        <p>The sum of a ({{a}}) and b ({{b}}) is <span ng-bind="a+b"></span></p>
+        <br>
+        <p><input type="checkbox" ng-model="tick1">Check this to disable the button</p>
+        <br>
+        <p>On clicking the button below, you will see... <span ng-show="x">this hidden text</span></p>
+        <button ng-disabled="tick1" ng-click="x= !x">Show</button>
+    </div>
+</body>
+</html>

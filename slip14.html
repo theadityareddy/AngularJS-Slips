@@ -5,7 +5,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
 
     <head>
-        <title>Slip 19</title>
+        <title>Slip 14</title>
     </head>
 
     <body>
@@ -13,7 +13,7 @@
             <table border="2">
                 <tr>
                     <th>Name of employee</th>
-                    <th>Salary (in $)</th>
+                    <th>Salary (in Rs)</th>
                 </tr>
                 <tr ng-repeat="x in employees | orderBy:'salary' ">
                     <td>{{x.name}}</td>
@@ -27,9 +27,9 @@
             app.controller("myCtrl", function($scope) {
                 $scope.employees = [
                     {name: 'Aditya', salary: 'Rs. 520,000'},
-                    {name: 'Shantanu', salary: 'Rs. 220.000'},
+                    {name: 'Shantanu', salary: 'Rs. 420.000'},
                     {name: 'Mitali', salary: 'Rs. 450,000'},
-                    {name: 'Omkar', salary: 'Rs. 290,000'},
+                    {name: 'Omkar', salary: 'Rs. 390,000'},
                     {name: 'Ishan', salary: 'Rs. 350,000'},
                     {name: 'Parth', salary: 'Rs. 400,000'}
                 ];

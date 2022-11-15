@@ -3,87 +3,77 @@
 <!DOCTYPE html>
 
 <html ng-app="myApp">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
-  </head>
 
-  <body>
-    <nav class="navbar navbar-dark bg-primary">
-      <a class="navbar-brand" href="#">E Learning System</a>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+</head>
 
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarText"
-        aria-controls="navbarText"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
+<body>
+  <nav class="navbar navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">E Learning System</a>
 
-      <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#!/home">Home 
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+      aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-          <li class="nav-item">
-            <a class="nav-link" href="#!/management">Management</a>
-          </li>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#!/home">Home
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="#!/staff">Staff</a>
-          </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#!/management">Management</a>
+        </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="#!/about">About</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+        <li class="nav-item">
+          <a class="nav-link" href="#!/staff">Staff</a>
+        </li>
 
-    <div ng-view></div>
+        <li class="nav-item">
+          <a class="nav-link" href="#!/about">About</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
-    <script>
-      var app = angular.module("myApp", ["ngRoute"]);
+  <div ng-view></div>
 
-      app.config(function ($routeProvider) {
-        $routeProvider
+  <script>
+    var app = angular.module("myApp", ["ngRoute"]);
 
-          .when("/home", {
-            templateUrl: "home.html",
-          })
+    app.config(function ($routeProvider) {
+      $routeProvider
 
-          .when("/management", {
-            templateUrl: "management.html",
-          })
+        .when("/home", {
+          templateUrl: "home.html",
+        })
 
-          .when("/staff", {
-            templateUrl: "staff.html",
-          })
+        .when("/management", {
+          templateUrl: "management.html",
+        })
 
-          .when("/about", {
-            templateUrl: "about.html",
-          })
+        .when("/staff", {
+          templateUrl: "staff.html",
+        })
 
-          .otherwise({ redirectTo: "/home" });
-      });
+        .when("/about", {
+          templateUrl: "about.html",
+        })
 
-      app.controller("HomeController", function ($scope) {
-        $scope.message = "Hello Welcome to Home page";
-      });
-    </script>
-  </body>
+        .otherwise({ redirectTo: "/home" });
+    });
+
+    app.controller("HomeController", function ($scope) {
+      $scope.message = "Hello Welcome to Home page";
+    });
+  </script>
+</body>
+
 </html>

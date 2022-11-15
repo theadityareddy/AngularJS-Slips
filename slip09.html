@@ -45,7 +45,8 @@ and suggestions. Display the Bill with total no of items selected and total amou
     </section>
 </div>
 <script>
-    var invoice = angular.module('invoice', []); invoice.controller('InvoiceController', function ($scope) {
+    var invoice = angular.module('invoice', []); 
+    invoice.controller('InvoiceController', function ($scope) {
         $scope.invoice = {
             items: [{
                 name: '',

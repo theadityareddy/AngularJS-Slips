@@ -1,0 +1,79 @@
+<!-- Create an HTML form using AngularJS that contain the Student Registration details and validate Student first and 
+last name as it should not contain other than alphabets and age should be between 18 to 50 and 
+display greeting message depending on current time using ng-show (e.g. Good Morning, Good Afternoon, etc.)(use AJAX). -->
+
+<html>
+
+<head>
+    <title>student program</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+
+<body ng-app="mainApp" ng-controller="studentController">
+    <h2>Student registration Form</h2>
+    <div>
+        <form name="stform" novalidate="true">
+            <table border="1">
+                <tr>
+                    <td>First name of student</td>
+                    <td><input type="text" name="name1" ng-model="name1" ng-pattern="/^([A-Z]|[a-z])*$/"
+                            ng-required="true"></td>
+                    <td><span style="color:red" ng-show="stform.name1.$dirty && stform.name1.$invalid"></span>
+                        <span ng-show="stform.name1.$error.required">Student Name is required.</span>
+                        <span ng-show="stform.name1.$error.pattern">Only characters are allowed.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Last name of student</td>
+                    <td><input type="text" name="name2" ng-model="name2" ng-pattern="/^([A-Z]|[a-z])*$/"
+                            ng-required="true"></td>
+                    <td><span style="color:red" ng-show="stform.name2.$dirty && stform.name2.$invalid"></span>
+                        <span ng-show="stform.name2.$error.required">Student Name is required.</span>
+                        <span ng-show="stform.name2.$error.pattern">Only characters are allowed.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Age</td>
+                    <td><input type="text" ng-model="Age" name="Age" required ng-pattern="/^(?:1[8-9]|[2-5][0-9]|60)$/">
+                    </td>
+                    <td> <span ng-show="stform.Age.$error.required">Age is required</span>
+                        <span class="error" ng-show="stform.Age.$error.pattern">Age should be more than 18</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td> <input type="button" value="Student Info" ng-click="isShow('show')">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div ng-show="showval">
+        <br><br>
+        Student Information<br><br>
+        <table border="1">
+            <tr>
+                <td>First name</td>
+                <td>Last name</td>
+                <td>Age</td>
+            </tr>
+            <tr>
+                <td>{{name1}}</td>
+                <td>{{name2}}</td>
+                <td>{{Age}}</td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        var mainApp = angular.module("mainApp", []);
+        mainApp.controller('studentController', function ($scope) {
+            $scope.showval = false;
+            $scope.isShow = function (param) {
+                if (param == "show") {
+                    $scope.showval = true;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

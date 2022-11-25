@@ -1,0 +1,86 @@
+<!-- Using AngularJS create a SPA that accept Voters details and check proper validation for (name, age, and nationality) 
+as Name should be in upper case letters, Age should not be less than 18 yrs and Nationality should be Indian.  -->
+
+<html>
+
+<head>
+    <title>Angular JS Validation Program</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+
+<body ng-app="mainApp" ng-controller="voterController">
+    <h2>Voter Details Form</h2>
+    <div>
+        <form name="voterform" novalidate="true">
+            <table border="1">
+                <tr>
+                    <td>Enter the Name of voter</td>
+                    <td>
+                        <input type="text" name="name1" ng-model="name1" ng-pattern="/^[A-Z]*$/" ng-required="true" />
+                    </td>
+                    <td>
+                        <span style="color: red" ng-show="voterform.name1.$dirty && voterform.name1.$invalid"></span>
+                        <span ng-show="voterform.name1.$error.required">Voter Name is required.</span>
+                        <span ng-show="voterform.name1.$error.pattern">only Uppercase characters are allowed.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Enter the voters age</td>
+                    <td>
+                        <input type="text" ng-model="Age" name="Age" required
+                            ng-pattern="/^(?:1[8-9]|[2-5][0-9]|99)$/" />
+                    </td>
+                    <td>
+                        <span ng-show="voterform.Age.$error.required">voter age is required</span>
+                        <span class="error" ng-show="voterform.Age.$error.pattern">Voter age should be more than
+                            18</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Enter the Nationality</td>
+                    <td>
+                        <input type="text" name="nat" ng-model="nat" ng-required="true" />
+                    </td>
+                    <td>
+                        <span class="error" ng-show="voterform.nat.$error.required">Nationality is required</span>
+                        <span ng-show="voterform.pincode.$error.pattern">Nationality should be Indian</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" value="Voter Info" ng-click="isShow('show')" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div ng-show="showval">
+        <br /><br />
+        voter Information<br /><br />
+        <table border="1">
+            <tr>
+                <td>name</td>
+                <td>Age</td>
+                <td>Nationality</td>
+            </tr>
+            <tr>
+                <td>{{name1}}</td>
+                <td>{{Age}}</td>
+                <td>{{nat}}</td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        var mainApp = angular.module("mainApp", []);
+        mainApp.controller("voterController", function ($scope) {
+            $scope.showval = false;
+            $scope.isShow = function (param) {
+                if (param == "show") {
+                    $scope.showval = true;
+                }
+            };
+        });
+    </script>
+</body>
+
+</html>

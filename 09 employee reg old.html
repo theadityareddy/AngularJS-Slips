@@ -1,0 +1,75 @@
+<!-- Create an HTML form using AngularJS that contain the Employee Registration details and  validate DOB, Joining Date, and 
+Salary and also create a simple arithmetic calculator using radio buttons (use ng-switch, ng-switch-when) -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Employee Registration Form</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+</head>
+
+<body ng-app="mainApp" ng-controller="empController">
+    <h2>Employee Registration Form</h2>
+    <div ng-app="mainApp" ng-controller="empController">
+        <form name="employeeForm" novalidate>
+            Enter Date of Birth:
+            <input name="dob" type="text" ng-model="dob" ng-pattern="/^[0-9]/" required>
+            <span style="color:red" ng-show="employeeForm.dob.$dirty && employeeForm.dob.$invalid">
+                <span ng-show="employeeForm.dob.$error.required">Date of Birth is required.</span>
+                <span ng-show="employeeForm.dob.$error.pattern">Not a valid date of birth !</span></span>
+
+            Enter the Joining Date:<input name="jdate" type="text" ng-model="jdate" ng-pattern="/^[0-9]/" required>
+            <span style="color:red" ng-show="employeeForm.jdate.$dirty && employeeForm.jdate.$invalid">
+                <span ng-show="employeeForm.jdate.$error.required">Joining Date is required.</span>
+                <span ng-show="employeeForm.jdate.$error.pattern">Not a valid joining date!</span></span>
+
+            Enter the Salary:<input type="text" ng-model="salary" name="salary" ng-pattern="/^[0-9]/" required>
+            <span style="color:red" ng-show="employeeForm.salary.$dirty && employeeForm.salary.$invalid">
+                <span ng-show="employeeForm.salary.$error.required">salary is required.</span>
+                <span ng-show="employeeForm.salary.$error.pattern">Not a valid number!</span></span>
+            <button ng-click="reset()">Reset</button>
+
+            <button ng-disabled="employeeForm.dob.$dirty && employeeForm.dob.$invalid || employeeForm.jdate.$dirty &&
+employeeForm.jdate.$invalid||employeeForm.salary.$invalid && employeeForm.salary.$dirty"
+                ng-click="submit()">Submit</button><br><br>
+    </div>
+    </form>
+    <script>
+        var mainApp = angular.module("mainApp", []); mainApp.controller('empController', function ($scope) {
+            $scope.reset = function () {
+                $scope.dob = "";
+                $scope.jdate = "";
+                $scope.salary = "";
+            }
+            $scope.reset();
+        });
+    </script>
+
+    <form>
+        <label>Enter First Value</label><input type="number" name="first" ng-model="number1"><br>
+        <label>Enter Second Value</label><input type="number" name="second" ng-model="number2">
+        <br>
+        <br>select operation<br>
+        Addition<input type="radio" value="+" name="arith" ng-model="status"><br>
+        Subtraction<input type="radio" value="-" name="arith" ng-model="status"><br>
+        Multiplication<input type="radio" value="*" name="arith" ng-model="status"><br>
+        Division<input type="radio" value="/" name="arith" ng-model="status"><br>
+    </form>
+    <hr>
+    <div ng-switch="status">
+
+        <div ng-switch-when="+">
+            <h2>Ans:{{number1+number2}}</h2>
+        </div>
+        <div ng-switch-when="-">
+            <h2>Ans:{{number1-number2}}</h2>
+        </div>
+        <div ng-switch-when="*">
+            <h2> Ans:{{number1*number2}}</h2>
+        </div>
+        <div ng-switch-when="/">
+            <h2> Ans:{{number1/number2}}</h2>
+        </div>
+    </div>
+    </form>

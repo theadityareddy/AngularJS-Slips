@@ -67,7 +67,9 @@
                     templateUrl: "halffry.html",
                 })
 
-                .otherwise({ redirectTo: "/home" });
+                .otherwise({ 
+                    redirectTo: "/home" 
+                });
         });
 
         app.controller("HomeController", function ($scope) {

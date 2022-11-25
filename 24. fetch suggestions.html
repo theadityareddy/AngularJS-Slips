@@ -1,0 +1,52 @@
+<!-- Using AngularJS create a SPA to fetch suggestions when is user is typing in a textbox. 
+(eg like google suggestions. Hint create array of suggestions and matching string will be displayed).	 -->
+
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+
+  <title>Searching name in Angularjs</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+</head>
+
+<body ng-app="mainApp" ng-controller="FilterController">
+  <div ng-controller="FilterController">
+    <div>
+      Enter the Search Keyword:
+
+      <input type="text" name="searchname" ng-model="searchname" />
+
+      <div ng-hide="users"></div>
+
+      <table>
+        <tr ng-repeat="a in users | filter : searchname" ng-show="searchname">
+          <td>{{a.name}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    var mainApp = angular.module("mainApp", []);
+    mainApp.controller("FilterController", function ($scope) {
+      $scope.users = [
+        {
+          name: "Education",
+        },
+        {
+          name: "Sports",
+        },
+        {
+          name: "Bollywood",
+        },
+        {
+          name: "Politics",
+        },
+      ];
+    });
+  </script>
+</body>
+
+</html>

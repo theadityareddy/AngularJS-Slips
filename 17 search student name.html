@@ -1,0 +1,36 @@
+<!--Write an AngularJS script to search student name according to the character typed and
+display details( use array and filter).-->
+<html>
+
+<head>
+    <script src="E:\angular.min.js"></script>
+</head>
+
+<body ng-app="mainapp" ng-controller="filtercontroller">
+    <div ng-controller="filtercontroller">
+        <div>
+            Enetr the character:
+            <input type="text" name="searchname" ng-model="searchname">
+            <div ng-hide="users"></div>
+            <table>
+                <tr ng-repeat="a in users | filetr:searchname" ng-show="searchname">
+                    <td>{{a.name}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script>
+        var mainapp = angular.module("mainApp", []);
+        mainApp.controller("filtercontroller", function ($scope) {
+            $scope.users = [
+                {name: "samarth kulkarni",}, 
+                {name: "abhay deshmukh",}, 
+                {name: "ramesh jadhav",}, 
+                {name: "sachin dubey",}, 
+                {name: "ajay kumthe",}
+            ];
+        });
+    </script>
+</body>
+
+</html>

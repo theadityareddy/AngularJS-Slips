@@ -1,0 +1,138 @@
+<!-- Using AngularJS create a SPA that to accept the details such as name, mobile number, pin-code and email address 
+and make validation. Name should contain character only, mobile number should contain only 10 digit, 
+Pin code should contain only 6 digit, email id should contain only one @ -->
+
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+
+    <title>Angular JS Validation Program</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+</head>
+
+<body ng-app="mainApp" ng-controller="personController">
+    <h2>Angular JS Person Information</h2>
+
+    <div>
+        <form name="personform" novalidate="true">
+            <table border="1">
+                <tr>
+                    <td>Enter the Name of Person</td>
+
+                    <td>
+                        <input type="text" name="name1" ng-model="name1" ng-pattern="/^[a-zA-Z]*$/" required />
+                    </td>
+
+                    <td>
+                        <span style="color: red" ng-show="personform.name1.$dirty && personform.name1.$invalid"></span>
+
+                        <span ng-show="personform.name1.$error.required">Name is required.</span>
+
+                        <span ng-show="personform.name1.$error.pattern">only characters are allowed.</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Enter your MobileNo</td>
+
+                    <td>
+                        <input type="number" name="mobile" ng-model="mobile" ng-pattern="/^[7-9][0-9]{9}$/" ng-
+                            minlength="10" ng-maxlength="10" required />
+                    </td>
+
+                    <td>
+                        <span ng-show="personform.mobile.$error.required">Phone number is required</span>
+
+                        <span ng-show=" personform.mobile.$error.pattern">
+                            Valid phone number is required</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Enter Pin Code</td>
+
+                    <td>
+                        <input type="number" name="pincode" ng-model="pincode" ng-pattern="/^[0-5]{6}$/" ng-
+                            minlength="6" ng-maxlength="6" required />
+                    </td>
+
+                    <td>
+                        <span ng-show="personform.pincode.$error.required">pin code is required</span>
+
+                        <span ng-show="personform.pincode.$error.pattern">Valid pin code is required</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Enter Email ID</td>
+
+                    <td>
+                        <input type="email" name="email" ng-model="email" ng-maxlength="100" required />
+                    </td>
+
+                    <td>
+                        <span style="color: red" ng-show="personform.email.$dirty && personform.email.
+
+$invalid"></span>
+
+                        <span ng-show="personform.email.$error.required">Email is required.</span>
+
+                        <span ng-show="personform.email.$error.email">Invalid email address.</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <input type="button" value="Display Person Info" ng-click="isShow('show')" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <div ng-show="showval">
+        <br /><br />
+
+        Information of Person<br /><br />
+
+        <table border="2">
+            <thead>
+                <td>name</td>
+
+                <td>Mobile</td>
+
+                <td>Pincode</td>
+
+                <td>Email</td>
+            </thead>
+
+            <tr>
+                <td>{{name1}}</td>
+
+                <td>{{mobile}}</td>
+
+                <td>{{pincode}}</td>
+
+                <td>{{email}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        var mainApp = angular.module("mainApp", []);
+
+        mainApp.controller("personController", function ($scope) {
+            $scope.showval = false;
+
+            $scope.isShow = function (param) {
+                if (param == "show") {
+                    $scope.showval = true;
+                }
+            };
+        });
+    </script>
+</body>
+
+</html>

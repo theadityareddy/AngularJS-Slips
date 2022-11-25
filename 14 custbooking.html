@@ -1,0 +1,91 @@
+<!-- Using AngularJS Create a SPA to take the information of a customer for booking a plan consisting of fields such as 
+name, address, contact no., gender, Date of booking, date of journey, no of passenger, name of passenger etc. Display the e-Ticket. -->
+
+<html>
+
+<head>
+    <script src="E:\angular.min.js"></script>
+</head>
+
+<body ng-app="mainApp" ng-controller="custController">
+    <h2 style-color: Red;>Customer information for booking</h2>
+    <div>
+        <form name="f1">
+            <table border="1">
+                <tr>
+                    <td>Enter customer name</td>
+                    <td><input type="text" name="custname" ng-model="custname"></td>
+                </tr>
+                <tr>
+                    <td>Enter customer address </td>
+                    <td><input type="text" name="custaddr" ng-model="custaddr"></td>
+                </tr>
+                <tr>
+                    <td>Enter Contact number </td>
+                    <td><input type="number" name="custcontact" ng-model="custcontact"> </td>
+                </tr>
+                <tr>
+                    <td>Enter Gender</td>
+                    <td> <input type="text" name="custgender" ng-model="custgender">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Enter Date of booking</td>
+                    <td> <input type="date" name="custdob" ng-model="custdob">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Enter Date of journey</td>
+                    <td> <input type="date" name="custdoj" ng-model="custdoj"> </td>
+                </tr>
+                <tr>
+                    <td>Enter Number of passengers</td>
+                    <td> <input type="number" name="custpass" ng-model="custpass"> </td>
+                </tr>
+                <tr>
+                    <td> <input type="button" value="Display Ticket" ng-click="isShowHide('show')">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div ng-show="showval">
+        <br><br>
+        <h1 style=color:green;>E-ticket of passenger</h1>
+        <form name="f2" ng-controller="custController">
+            <table border="2">
+                <tr>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Contact number</th>
+                    <th>Gender</th>
+                    <th>Date of booking</th>
+                    <th>Date of journey</th>
+                    <th>Number of passengers</th>
+                </tr>
+                <tr>
+                    <td>{{custname}}</td>
+                    <td>{{custaddr}}</td>
+                    <td>{{custcontact}}</td>
+                    <td>{{custgender}}</td>
+                    <td>{{custdob}}</td>
+                    <td>{{custdoj}}</td>
+                    <td>{{custpass}}</td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <script>
+        var mainApp =
+            angular.module("mainApp", []); mainApp.controller('custController',
+                function ($scope) {
+                    $scope.showval = false; $scope.isShowHide = function (param) {
+                        if (param == "show") {
+                            $scope.showval = true;
+                        }
+                    }
+                });
+    </script>
+</body>
+
+</html>
